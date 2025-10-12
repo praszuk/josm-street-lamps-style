@@ -1,0 +1,23 @@
+meta {
+    title: "Street lamps";
+    description: "Highlights highway=street_lamp objects with different colors depending on the lamp type (LED and electric). Inspired by the OSMStreetLight project. Based on and recommended for use with the LitObjects style.";
+    author: "NieWnen";
+    version: "1.1_2025-08-16";
+}
+
+*[highway=street_lamp]::lighting_glows          { prop_x_lighting: "electric" }
+*[lamp_type=LED]::lighting_glows          { prop_x_lighting: "led" }
+*[lamp_type=led]::lighting_glows          { prop_x_lighting: "led" }
+
+
+*[highway=street_lamp]::lighting_glows {
+    object-z-index: -1.0;
+}
+
+node[highway=street_lamp]::lighting_glows {
+    symbol-fill-opacity: 0.5;
+    symbol-shape: circle;
+    symbol-size: 70;
+}
+node[prop("prop_x_lighting")="electric"]::lighting_glows { symbol-fill-color: #ffbb44 }
+node[prop("prop_x_lighting")="led"]::lighting_glows { symbol-fill-color: #faf9f0 }
