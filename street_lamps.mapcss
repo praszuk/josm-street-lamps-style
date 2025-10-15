@@ -5,6 +5,36 @@ meta {
     version: "1.2_2025-10-13";
 }
 
+setting::base_circle_glow_size {
+    type: double;
+    label: tr("Base circle glow size");
+    default: 40;
+}
+
+setting::base_circle_glow_opacity {
+    type: double;
+    label: tr("Base circle glow opacity (0.0-1.0)");
+    default: 0.5;
+}
+
+setting::light_point_icon_size {
+    type: double;
+    label: tr("Light point icon size – width and height.");
+    default: 80;
+}
+
+setting::light_point_icon_opacity {
+    type: double;
+    label: tr("Light point icon opacity (0.0-1.0)");
+    default: 0.9;
+}
+
+setting::light_point_icon_radius {
+    type: double;
+    label: tr("Light point icon position from center (radius)");
+    default: 15;
+}
+
 node[highway=street_lamp]::*{ prop_lamp_type: "electric"; prop_symbol_fill_color: "#ffbb44"; }
 node[lamp_type=LED]::*{ prop_lamp_type: "led"; prop_symbol_fill_color: "#faf9f0"; }
 node[lamp_type=led]::*{ prop_lamp_type: "led"; prop_symbol_fill_color: "#faf9f0"; }
@@ -13,8 +43,8 @@ node[lamp_type=led]::*{ prop_lamp_type: "led"; prop_symbol_fill_color: "#faf9f0"
 node[highway=street_lamp]::lighting_glows {
     object-z-index: -1.0;
     symbol-shape: circle;
-    symbol-size: 40;
-    symbol-fill-opacity: 0.5;
+    symbol-size: setting(base_circle_glow_size);
+    symbol-fill-opacity: setting(base_circle_glow_opacity);
     symbol-fill-color: prop(prop_symbol_fill_color);
 }
 
@@ -35,14 +65,14 @@ node[highway=street_lamp][light:count>1]::light_1 {
     
     default_degree: 0;
     degree: cond(prop(direction_len) > 0, get(prop(direction_list), 0), prop(default_degree));
-    x: round(sin(degree_to_radians(prop(degree))) * 15);
-    y: round(-cos(degree_to_radians(prop(degree))) * 15);
+    x: round(sin(degree_to_radians(prop(degree))) * setting(light_point_icon_radius));
+    y: round(-cos(degree_to_radians(prop(degree))) * setting(light_point_icon_radius));
     text: concat(prop(x), ", ", prop(y));
     text-opacity: 0.0;
     
-    icon-width: 80;
-    icon-height: 80;
-    icon-opacity: 0.9;
+    icon-width: setting(light_point_icon_size);
+    icon-height: setting(light_point_icon_size);
+    icon-opacity: setting(light_point_icon_opacity);
     icon-offset-x: prop(x);
     icon-offset-y: prop(y);
 }
@@ -54,14 +84,14 @@ node[highway=street_lamp][light:count>1]::light_2 {
     
     default_degree: 360/tag("light:count");
     degree: cond(prop(direction_len) > 1, get(prop(direction_list), 1), prop(default_degree));
-    x: round(sin(degree_to_radians(prop(degree))) * 15);
-    y: round(-cos(degree_to_radians(prop(degree))) * 15);
+    x: round(sin(degree_to_radians(prop(degree))) * setting(light_point_icon_radius));
+    y: round(-cos(degree_to_radians(prop(degree))) * setting(light_point_icon_radius));
     text: concat(prop(x), ", ", prop(y));
     text-opacity: 0.0;
     
-    icon-width: 80;
-    icon-height: 80;
-    icon-opacity: 0.9;
+    icon-width: setting(light_point_icon_size);
+    icon-height: setting(light_point_icon_size);
+    icon-opacity: setting(light_point_icon_opacity);
     icon-offset-x: prop(x);
     icon-offset-y: prop(y);
 }
@@ -73,14 +103,14 @@ node[highway=street_lamp][light:count>2]::light_3 {
     
     default_degree: 2*360/tag("light:count");
     degree: cond(prop(direction_len) > 2, get(prop(direction_list), 2), prop(default_degree));
-    x: round(sin(degree_to_radians(prop(degree))) * 15);
-    y: round(-cos(degree_to_radians(prop(degree))) * 15);
+    x: round(sin(degree_to_radians(prop(degree))) * setting(light_point_icon_radius));
+    y: round(-cos(degree_to_radians(prop(degree))) * setting(light_point_icon_radius));
     text: concat(prop(x), ", ", prop(y));
     text-opacity: 0.0;
     
-    icon-width: 80;
-    icon-height: 80;
-    icon-opacity: 0.9;
+    icon-width: setting(light_point_icon_size);
+    icon-height: setting(light_point_icon_size);
+    icon-opacity: setting(light_point_icon_opacity);
     icon-offset-x: prop(x);
     icon-offset-y: prop(y);
 }
@@ -92,14 +122,14 @@ node[highway=street_lamp][light:count>3]::light_4 {
     
     default_degree: 3*360/tag("light:count");
     degree: cond(prop(direction_len) > 3, get(prop(direction_list), 3), prop(default_degree));
-    x: round(sin(degree_to_radians(prop(degree))) * 15);
-    y: round(-cos(degree_to_radians(prop(degree))) * 15);
+    x: round(sin(degree_to_radians(prop(degree))) * setting(light_point_icon_radius));
+    y: round(-cos(degree_to_radians(prop(degree))) * setting(light_point_icon_radius));
     text: concat(prop(x), ", ", prop(y));
     text-opacity: 0.0;
     
-    icon-width: 80;
-    icon-height: 80;
-    icon-opacity: 0.9;
+    icon-width: setting(light_point_icon_size);
+    icon-height: setting(light_point_icon_size);
+    icon-opacity: setting(light_point_icon_opacity);
     icon-offset-x: prop(x);
     icon-offset-y: prop(y);
 }
@@ -111,14 +141,14 @@ node[highway=street_lamp][light:count>4]::light_5 {
     
     default_degree: 4*360/tag("light:count");
     degree: cond(prop(direction_len) > 4, get(prop(direction_list), 4), prop(default_degree));
-    x: round(sin(degree_to_radians(prop(degree))) * 15);
-    y: round(-cos(degree_to_radians(prop(degree))) * 15);
+    x: round(sin(degree_to_radians(prop(degree))) * setting(light_point_icon_radius));
+    y: round(-cos(degree_to_radians(prop(degree))) * setting(light_point_icon_radius));
     text: concat(prop(x), ", ", prop(y));
     text-opacity: 0.0;
     
-    icon-width: 80;
-    icon-height: 80;
-    icon-opacity: 0.9;
+    icon-width: setting(light_point_icon_size);
+    icon-height: setting(light_point_icon_size);
+    icon-opacity: setting(light_point_icon_opacity);
     icon-offset-x: prop(x);
     icon-offset-y: prop(y);
 }
@@ -130,14 +160,14 @@ node[highway=street_lamp][light:count>5]::light_6 {
     
     default_degree: 5*360/tag("light:count");
     degree: cond(prop(direction_len) > 5, get(prop(direction_list), 5), prop(default_degree));
-    x: round(sin(degree_to_radians(prop(degree))) * 15);
-    y: round(-cos(degree_to_radians(prop(degree))) * 15);
+    x: round(sin(degree_to_radians(prop(degree))) * setting(light_point_icon_radius));
+    y: round(-cos(degree_to_radians(prop(degree))) * setting(light_point_icon_radius));
     text: concat(prop(x), ", ", prop(y));
     text-opacity: 0.0;
     
-    icon-width: 80;
-    icon-height: 80;
-    icon-opacity: 0.9;
+    icon-width: setting(light_point_icon_size);
+    icon-height: setting(light_point_icon_size);
+    icon-opacity: setting(light_point_icon_opacity);
     icon-offset-x: prop(x);
     icon-offset-y: prop(y);
 }
@@ -149,14 +179,14 @@ node[highway=street_lamp][light:count>6]::light_7 {
     
     default_degree: 6*360/tag("light:count");
     degree: cond(prop(direction_len) > 6, get(prop(direction_list), 6), prop(default_degree));
-    x: round(sin(degree_to_radians(prop(degree))) * 15);
-    y: round(-cos(degree_to_radians(prop(degree))) * 15);
+    x: round(sin(degree_to_radians(prop(degree))) * setting(light_point_icon_radius));
+    y: round(-cos(degree_to_radians(prop(degree))) * setting(light_point_icon_radius));
     text: concat(prop(x), ", ", prop(y));
     text-opacity: 0.0;
     
-    icon-width: 80;
-    icon-height: 80;
-    icon-opacity: 0.9;
+    icon-width: setting(light_point_icon_size);
+    icon-height: setting(light_point_icon_size);
+    icon-opacity: setting(light_point_icon_opacity);
     icon-offset-x: prop(x);
     icon-offset-y: prop(y);
 }
@@ -168,14 +198,14 @@ node[highway=street_lamp][light:count>7]::light_8 {
     
     default_degree: 7*360/tag("light:count");
     degree: cond(prop(direction_len) > 7, get(prop(direction_list), 7), prop(default_degree));
-    x: round(sin(degree_to_radians(prop(degree))) * 15);
-    y: round(-cos(degree_to_radians(prop(degree))) * 15);
+    x: round(sin(degree_to_radians(prop(degree))) * setting(light_point_icon_radius));
+    y: round(-cos(degree_to_radians(prop(degree))) * setting(light_point_icon_radius));
     text: concat(prop(x), ", ", prop(y));
     text-opacity: 0.0;
     
-    icon-width: 80;
-    icon-height: 80;
-    icon-opacity: 0.9;
+    icon-width: setting(light_point_icon_size);
+    icon-height: setting(light_point_icon_size);
+    icon-opacity: setting(light_point_icon_opacity);
     icon-offset-x: prop(x);
     icon-offset-y: prop(y);
 }
