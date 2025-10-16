@@ -1,7 +1,8 @@
 meta {
     title: "Street lamps";
-    description: "Highlights highway=street_lamp objects with different colors depending on the lamp type (LED and electric). Inspired by the OSMStreetLight project. Based on and recommended for use with the LitObjects style.";
+    description: "Improves the visibility of highway=street_lamp objects.";
     author: "NieWnen";
+    link: "https://github.com/praszuk/josm-street-lamps-style";
     version: "1.2_2025-10-13";
 }
 
