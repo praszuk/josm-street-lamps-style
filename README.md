@@ -10,7 +10,7 @@ Highlights `highway=street_lamp` objects using different colors depending on the
 - Supports `light:count` and `light:direction` tags – renders multiple (up to 8) light points for a single lamp. If `light:direction` is missing, it falls back to default angles.
 
 ## Settings
-Open JOSM's Advanced Settings and type "street_lamps". You can modify the following attributes:
+Open JOSM's Advanced Preferences and type "josm-street-lamps-style". You can modify the following attributes:
 - `base_circle_glow_size`
 - `base_circle_glow_opacity` (0.0-1.0)
 - `light_point_icon_size`
