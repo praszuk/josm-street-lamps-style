@@ -3,7 +3,7 @@ meta {
     description: "Improves the visibility of highway=street_lamp objects.";
     author: "NieWnen";
     link: "https://github.com/praszuk/josm-street-lamps-style";
-    version: "1.2_2025-10-13";
+    version: "1.3_2025-10-19";
 }
 
 setting::base_circle_glow_size {
@@ -21,7 +21,7 @@ setting::base_circle_glow_opacity {
 setting::light_point_icon_size {
     type: double;
     label: tr("Light point icon size – width and height.");
-    default: 80;
+    default: 40;
 }
 
 setting::light_point_icon_opacity {
