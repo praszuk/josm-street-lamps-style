@@ -1,0 +1,44 @@
+{
+  "data_format": 1,
+  "data_url": "https://raw.githubusercontent.com/praszuk/josm-street-lamps-style/master/taginfo.json",
+  "data_updated": "20251019T000000Z",
+  "project": {
+    "name": "josm_street_lamps_style",
+    "description": "Improves the visibility of street lamps.",
+    "project_url": "https://github.com/praszuk/josm-street-lamps-style",
+    "doc_url": "https://github.com/praszuk/josm-street-lamps-style",
+    "contact_name": "NieWnen",
+    "contact_email": "niewnen@gmail.com"
+  },
+  "tags": [
+    {
+      "key": "highway",
+      "value": "street_lamp",
+      "description": "Adds a glowing circle around a node",
+      "object_types": [
+        "node"
+      ]
+    },
+    {
+      "key": "light:count",
+      "description": "Draws <number> of lamp points."
+      "object_types": [
+        "node"
+      ]
+    },
+    {
+      "key": "light:direction",
+      "description": "Rotates lamp points to degree values.",
+      "object_types": [
+        "node"
+      ]
+    },
+    {
+      "key": "lamp_type",
+      "description": "Renders different color based on type",
+      "object_types": [
+        "node"
+      ]
+    }
+  ]
+}
