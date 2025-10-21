@@ -21,7 +21,7 @@
     },
     {
       "key": "light:count",
-      "description": "Draws <number> of lamp points."
+      "description": "Draws <number> of lamp points.",
       "object_types": [
         "node"
       ]
